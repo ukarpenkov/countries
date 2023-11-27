@@ -10,7 +10,8 @@ export const Button = styled.button`
   border: none;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.75rem; 
+  
 
   color: var(--color-text);
   cursor: pointer;
