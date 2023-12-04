@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { ReactNode } from 'react'
+import styled from 'styled-components'
 
 const Wrapper = styled.section`
   width: 100%;
@@ -19,8 +20,11 @@ const Wrapper = styled.section`
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
   }
-`;
+`
 
-export const List = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
-};
+interface ListProps {
+  children: ReactNode
+}
+export const List = ({ children }: ListProps) => {
+  return <Wrapper>{children}</Wrapper>
+}
