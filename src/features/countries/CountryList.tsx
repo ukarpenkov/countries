@@ -1,14 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import { CountryInfo } from 'types'
-import { List } from '../../components/List';
-import { Card } from '../../components/Card';
-import { useCountries } from './use-countries';
-
+import { List } from 'components/List'
+import { Card } from 'components/Card'
+import { useCountries } from './use-countries'
 
 const CountryList = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [countries, { error, status }] = useCountries();
+  const [countries, { error, status }] = useCountries()
 
   return (
     <>
@@ -19,7 +18,6 @@ const CountryList = () => {
         <List>
           {countries.map((c) => {
             const countryInfo: CountryInfo = {
-
               img: c.flags.png,
               name: c.name,
               info: [
@@ -36,7 +34,7 @@ const CountryList = () => {
                   description: c.capital,
                 },
               ],
-            };
+            }
 
             return (
               <Card
@@ -44,7 +42,7 @@ const CountryList = () => {
                 onClick={() => void navigate(`/country/${c.name}`)}
                 {...countryInfo}
               />
-            );
+            )
           })}
         </List>
       )}
@@ -52,4 +50,4 @@ const CountryList = () => {
   )
 }
 
-export { CountryList };
+export { CountryList }
