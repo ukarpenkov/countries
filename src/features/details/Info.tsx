@@ -1,5 +1,7 @@
-import styled from 'styled-components';
-import { useNeighbors } from './use-neighbors';
+import styled from 'styled-components'
+import { useNeighbors } from './use-neighbors'
+import { Country } from 'types'
+import { NavigateFunction } from 'react-router-dom'
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -16,19 +18,19 @@ const Wrapper = styled.section`
   @media (min-width: 1024px) {
     grid-template-columns: minmax(400px, 600px) 1fr;
   }
-`;
+`
 
 const InfoImage = styled.img`
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
-`;
+`
 
 const InfoTitle = styled.h1`
   margin: 0;
   font-weight: var(--fw-normal);
-`;
+`
 
 const ListGroup = styled.div`
   display: flex;
@@ -40,13 +42,13 @@ const ListGroup = styled.div`
     flex-direction: row;
     gap: 4rem;
   }
-`;
+`
 
 const List = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-`;
+`
 
 const ListItem = styled.li`
   line-height: 1.8;
@@ -54,7 +56,7 @@ const ListItem = styled.li`
   & > b {
     font-weight: var(--fw-bold);
   }
-`;
+`
 
 const Meta = styled.div`
   margin-top: 3rem;
@@ -71,13 +73,13 @@ const Meta = styled.div`
     flex-direction: row;
     align-items: center;
   }
-`;
+`
 
 const TagGroup = styled.div`
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-`;
+`
 
 const Tag = styled.span`
   padding: 0 1rem;
@@ -85,9 +87,13 @@ const Tag = styled.span`
   box-shadow: var(--shadow);
   line-height: 1.5;
   cursor: pointer;
-`;
+`
 
-export const Info = (props) => {
+interface InfoProps extends Country {
+  push: NavigateFunction
+}
+
+export const Info = (props: InfoProps) => {
   const {
     name,
     nativeName,
@@ -101,9 +107,9 @@ export const Info = (props) => {
     languages = [],
     borders = [],
     push,
-  } = props;
+  } = props
 
-  const neighbors = useNeighbors(borders);
+  const neighbors = useNeighbors(borders)
 
   return (
     <Wrapper>
@@ -157,7 +163,10 @@ export const Info = (props) => {
           ) : (
             <TagGroup>
               {neighbors.map((countryName) => (
-                <Tag key={countryName} onClick={() => push(`/country/${countryName}`)}>
+                <Tag
+                  key={countryName}
+                  onClick={() => push(`/country/${countryName}`)}
+                >
                   {countryName}
                 </Tag>
               ))}
@@ -166,5 +175,5 @@ export const Info = (props) => {
         </Meta>
       </div>
     </Wrapper>
-  );
-};
+  )
+}

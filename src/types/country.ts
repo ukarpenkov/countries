@@ -14,7 +14,7 @@ type Languages = {
 
 export type Country = {
   name: string
-  nativename: string
+  nativeName: string
   flag: string
   flags: { png: string; svg: string }
   region: Region
