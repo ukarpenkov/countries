@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import Select from 'react-select';
+import Select, { Props } from 'react-select'
+
+function MySelect(props: Props) {
+  return <Select />
+}
 
 export const CustomSelect = styled(Select).attrs({
   styles: {
@@ -44,4 +48,4 @@ export const CustomSelect = styled(Select).attrs({
   & > div[id] {
     background-color: var(--colors-ui-base);
   }
-`;
+`
